@@ -4,6 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>¡Te espero en mi picnic! 🧺🌸</title>
+  
+  <!-- Librería de confeti para efectos visuales -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
   <style>
     * {
       box-sizing: border-box;
@@ -23,45 +27,46 @@
       position: relative;
     }
 
-    /* Decoraciones florales fijas */
+    /* Esquinas armónicas con lazos */
     .corner-floral {
       position: fixed;
-      font-size: 2.5rem;
+      font-size: 2.2rem;
       pointer-events: none;
       z-index: 2;
+      user-select: none;
     }
     .top-left { top: 15px; left: 20px; }
     .top-right { top: 15px; right: 20px; }
     .bottom-left { bottom: 15px; left: 20px; }
     .bottom-right { bottom: 15px; right: 20px; }
 
-    /* Flores flotantes de fondo */
+    /* Elementos flotantes de picnic */
     .bg-flower {
       position: fixed;
       pointer-events: none;
       user-select: none;
       animation: float 7s ease-in-out infinite;
-      opacity: 0.7;
+      opacity: 0.8;
       z-index: 1;
     }
 
-    .f1 { top: 12%; left: 15%; font-size: 2.2rem; animation-delay: 0s; }
-    .f2 { top: 65%; left: 8%; font-size: 2.8rem; animation-delay: 2s; }
-    .f3 { top: 20%; right: 12%; font-size: 2.5rem; animation-delay: 1s; }
-    .f4 { top: 70%; right: 10%; font-size: 3rem; animation-delay: 3s; }
-    .f5 { top: 45%; left: 4%; font-size: 2rem; animation-delay: 4s; }
-    .f6 { top: 50%; right: 5%; font-size: 2.4rem; animation-delay: 2.5s; }
+    .f1 { top: 12%; left: 12%; font-size: 2.2rem; animation-delay: 0s; }
+    .f2 { top: 65%; left: 8%; font-size: 2.5rem; animation-delay: 2s; }
+    .f3 { top: 20%; right: 12%; font-size: 2.4rem; animation-delay: 1s; }
+    .f4 { top: 70%; right: 10%; font-size: 2.6rem; animation-delay: 3s; }
+    .f5 { top: 45%; left: 4%; font-size: 2.1rem; animation-delay: 4s; }
+    .f6 { top: 50%; right: 5%; font-size: 2.3rem; animation-delay: 2.5s; }
 
     @keyframes float {
       0%, 100% { transform: translateY(0px) rotate(0deg); }
-      50% { transform: translateY(-18px) rotate(12deg); }
+      50% { transform: translateY(-18px) rotate(10deg); }
     }
 
-    /* Pétalos cayendo */
+    /* Lluvia de flores */
     .petal {
       position: fixed;
       top: -10%;
-      font-size: 1.5rem;
+      font-size: 1.6rem;
       pointer-events: none;
       z-index: 1;
       animation: fall 10s linear infinite;
@@ -82,14 +87,13 @@
 
     .header-title {
       color: #880e4f;
-      font-size: clamp(1.7rem, 5vw, 2.4rem);
+      font-size: clamp(1.6rem, 5vw, 2.3rem);
       font-weight: 800;
-      margin-bottom: 10px;
+      margin-bottom: 12px;
       text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.9);
-      letter-spacing: -0.5px;
+      letter-spacing: -0.3px;
     }
 
-    /* Píldora de instrucciones mejorada */
     .instructions {
       margin-bottom: 25px;
       color: #880e4f;
@@ -97,19 +101,18 @@
       font-size: clamp(0.95rem, 3.5vw, 1.1rem);
       background: rgba(255, 240, 245, 0.75);
       backdrop-filter: blur(4px);
-      border: 1.5 solid #f8bbd0;
+      border: 1.5px solid #f8bbd0;
       padding: 10px 22px;
       border-radius: 30px;
       display: inline-flex;
       align-items: center;
       gap: 8px;
       box-shadow: 0 4px 15px rgba(136, 14, 79, 0.08);
-      transition: transform 0.2s ease, background 0.2s ease;
+      transition: transform 0.2s ease;
     }
 
     .instructions:hover {
       transform: scale(1.02);
-      background: rgba(255, 240, 245, 0.9);
     }
 
     .instructions-icon {
@@ -123,7 +126,6 @@
       50% { transform: scale(1.15); }
     }
 
-    /* Layout principal con GIFs a los lados */
     .invitation-wrapper {
       display: flex;
       justify-content: center;
@@ -146,7 +148,7 @@
       transform: scaleX(-1);
     }
 
-    /* Sobre interactivo responsive */
+    /* Sobre interactivo */
     .envelope-container {
       position: relative;
       width: min(320px, 85vw);
@@ -157,7 +159,6 @@
       cursor: pointer;
       perspective: 1000px;
       flex-shrink: 0;
-      overflow: hidden;
     }
 
     .flap {
@@ -208,12 +209,12 @@
 
     .card-preview {
       position: absolute;
-      bottom: 0px;
+      bottom: 12px;
       left: 7.5%;
       width: 85%;
-      height: 55%;
+      height: 180px;
       background: #fff;
-      border-radius: 8px 8px 0 0;
+      border-radius: 8px;
       z-index: 1;
       overflow: hidden;
       box-shadow: 0 2px 8px rgba(0,0,0,0.1);
@@ -237,10 +238,10 @@
     }
 
     .envelope-container.open .card-preview {
-      transform: translateY(-70px);
+      transform: translateY(-80px);
     }
 
-    /* Modal responsive */
+    /* Modal estilo Polaroid/Marco Rosa */
     .modal-overlay {
       position: fixed;
       top: 0;
@@ -331,36 +332,36 @@
       }
 
       .corner-floral {
-        font-size: 1.8rem;
+        font-size: 1.7rem;
       }
     }
   </style>
 </head>
 <body>
 
-  <!-- Flores en las esquinas -->
-  <div class="corner-floral top-left">🌸🌷</div>
-  <div class="corner-floral top-right">🌺🌸</div>
-  <div class="corner-floral bottom-left">🧺🌸</div>
-  <div class="corner-floral bottom-right">🌷🌺</div>
+  <!-- Esquinas armónicas con lazos -->
+  <div class="corner-floral top-left">🎀</div>
+  <div class="corner-floral top-right">🎀</div>
+  <div class="corner-floral bottom-left">🎀</div>
+  <div class="corner-floral bottom-right">🎀</div>
 
-  <!-- Flores flotantes -->
-  <div class="bg-flower f1">🌸</div>
-  <div class="bg-flower f2">🌺</div>
-  <div class="bg-flower f3">🌷</div>
-  <div class="bg-flower f4">🧺</div>
-  <div class="bg-flower f5">🌸</div>
-  <div class="bg-flower f6">✨</div>
+  <!-- Elementos flotantes de picnic -->
+  <div class="bg-flower f1">🧺</div>
+  <div class="bg-flower f2">🍰</div>
+  <div class="bg-flower f3">🥐</div>
+  <div class="bg-flower f4">☕️</div>
+  <div class="bg-flower f5">🥪</div>
+  <div class="bg-flower f6">👒</div>
 
-  <!-- Pétalos cayendo -->
-  <div class="petal" style="left: 10%; animation-delay: 0s;">🌸</div>
-  <div class="petal" style="left: 30%; animation-delay: 3s;">✨</div>
-  <div class="petal" style="left: 55%; animation-delay: 1s;">🌸</div>
-  <div class="petal" style="left: 75%; animation-delay: 5s;">🌷</div>
-  <div class="petal" style="left: 90%; animation-delay: 2s;">🌸</div>
+  <!-- Lluvia de flores -->
+  <div class="petal" style="left: 8%; animation-delay: 0s;">🌸</div>
+  <div class="petal" style="left: 28%; animation-delay: 3s;">🌺</div>
+  <div class="petal" style="left: 50%; animation-delay: 1.5s;">🏵️</div>
+  <div class="petal" style="left: 72%; animation-delay: 4.5s;">🌸</div>
+  <div class="petal" style="left: 88%; animation-delay: 2s;">🌺</div>
 
   <div class="container">
-    <h1 class="header-title">¡Te espero en mi picnic! 🧺✨</h1>
+    <h1 class="header-title">🌸 ¡Te espero en mi picnic! 🌸</h1>
     
     <div class="instructions" id="hint">
       <span class="instructions-icon">💌</span>
@@ -405,11 +406,43 @@
     const modal = document.getElementById('modal');
     const closeModal = document.getElementById('close-modal');
 
+    // Efecto elegante de Destellos Dorados + Estrellitas Flotantes
+    function triggerElegantSparkles() {
+      const duration = 2.5 * 1000;
+      const animationEnd = Date.now() + duration;
+
+      // Colores sofisticados: Rosa Gold, Dorado, Rosa Pastel y Blanco
+      const elegantColors = ['#ffd700', '#f48fb1', '#ffffff', '#f8bbd0', '#ffb74d'];
+
+      const interval = setInterval(function() {
+        const timeLeft = animationEnd - Date.now();
+
+        if (timeLeft <= 0) {
+          return clearInterval(interval);
+        }
+
+        // Lluvia sutil de estrellas desde ambos lados de la pantalla
+        confetti({
+          particleCount: 4,
+          startVelocity: 15,
+          ticks: 250,
+          origin: { x: Math.random(), y: Math.random() - 0.2 },
+          colors: elegantColors,
+          shapes: ['star', 'circle'],
+          scalar: 1.1,
+          gravity: 0.4,
+          drift: 0.2
+        });
+      }, 80);
+    }
+
     envelope.addEventListener('click', () => {
       envelope.classList.add('open');
+      
       setTimeout(() => {
+        triggerElegantSparkles();
         modal.classList.add('active');
-      }, 500);
+      }, 450);
     });
 
     closeModal.addEventListener('click', () => {
