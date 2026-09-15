@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>¡Te espero en mi picnic! 🧺🌸</title>
   
+  <!-- Tipografías de Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Playfair+Display:ital,wght@0,700;1,600&display=swap" rel="stylesheet">
@@ -17,7 +18,10 @@
     }
 
     body {
-      background: linear-gradient(135deg, #fce4ec 0%, #f8bbd0 50%, #f48fb1 100%);
+      background-image: url('fondo.jpg');
+      background-repeat: repeat;
+      background-size: 320px auto;
+      background-position: center;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -75,7 +79,7 @@
       z-index: 2;
     }
 
-    /* Posicionamiento simétrico a ambos lados */
+    /* Posicionamiento simétrico */
     .picnic-cesta { top: 18%; left: 19%; animation-delay: 0s; }
     .picnic-tarot { top: 46%; left: 13%; animation-delay: 2.5s; }
     .picnic-pastel { top: 74%; left: 18%; animation-delay: 1.5s; }
@@ -141,7 +145,7 @@
       color: #880e4f;
       font-weight: 700;
       font-size: clamp(0.88rem, 3.2vw, 1.05rem);
-      background: rgba(255, 245, 247, 0.88);
+      background: rgba(255, 253, 249, 0.92);
       border: 1px solid #f8bbd0;
       padding: 10px 22px;
       border-radius: 30px;
@@ -190,45 +194,49 @@
       transform: scaleX(-1);
     }
 
-    /* --- SOBRE ROSA RESPONSIVE --- */
+    /* --- SOBRE CREMA CON PLIEGUES Y TEXTURA DEFINIDA --- */
     .envelope-container {
       position: relative;
       width: min(310px, 82vw);
       height: min(200px, 53vw);
-      background: #f7cbd4;
+      background: #e6dcce;
       border-radius: 12px;
       box-shadow: 0 15px 35px rgba(136, 14, 79, 0.22);
       cursor: pointer;
       perspective: 1000px;
       flex-shrink: 0;
-      border: 1px solid #f48fb1;
+      border: 1.5px solid #d8c8b4;
       transform-style: preserve-3d;
     }
 
+    /* Solapa triangular superior destacada */
     .flap {
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
-      height: 52.5%;
-      background: linear-gradient(180deg, #f8bbd0 0%, #f48fb1 100%);
+      height: 53%;
+      background: linear-gradient(180deg, #fdfbf7 0%, #f5ebd8 100%);
       clip-path: polygon(0 0, 100% 0, 50% 100%);
       transform-origin: top center;
       transition: transform 0.55s ease-in-out;
       z-index: 4;
       backface-visibility: hidden;
       will-change: transform;
+      filter: drop-shadow(0 4px 6px rgba(110, 85, 65, 0.22));
+      border-bottom: 1.5px solid #d4c3af;
     }
 
+    /* Estampita "Para: Ti" */
     .recipient-tag {
       position: absolute;
-      bottom: 10%;
-      right: 5%;
-      background: #fffdf9;
-      border: 1.5px solid #f8bbd0;
+      bottom: 12%;
+      right: 6%;
+      background: #faf5eb;
+      border: 1.5px solid #d0beab;
       padding: 5px 14px;
       border-radius: 8px;
-      box-shadow: 0 3px 10px rgba(136, 14, 79, 0.12);
+      box-shadow: 0 4px 10px rgba(110, 85, 65, 0.15);
       font-family: 'Dancing Script', cursive;
       font-size: clamp(1.05rem, 3.5vw, 1.25rem);
       font-weight: 700;
@@ -236,7 +244,8 @@
       z-index: 5;
       pointer-events: none;
       transition: opacity 0.3s ease;
-      outline: 1px dashed #f48fb1;
+      transform: rotate(-3deg);
+      outline: 1px dashed #ad1457;
       outline-offset: -4px;
     }
 
@@ -271,18 +280,34 @@
       clip-path: polygon(50% 0, 100% 0, 100% 100%, 46% 100%, 56% 58%, 44% 28%);
     }
 
+    /* Bolsillo frontal con pliegues marcados */
     .pocket {
       position: absolute;
       bottom: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: linear-gradient(180deg, #f8bbd0 0%, #ec407a 100%);
+      background: linear-gradient(180deg, #f4eade 0%, #ebdcc9 100%);
       border-radius: 0 0 12px 12px;
       clip-path: polygon(0 0, 50% 50%, 100% 0, 100% 100%, 0 100%);
       z-index: 3;
       pointer-events: none;
-      box-shadow: inset 0 2px 6px rgba(255, 255, 255, 0.4);
+      box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.7);
+      border-top: 1px solid #d2c0ac;
+    }
+
+    /* Pliegues laterales visibles */
+    .envelope-container::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, rgba(180, 155, 130, 0.15) 0%, transparent 40%, transparent 60%, rgba(180, 155, 130, 0.15) 100%);
+      clip-path: polygon(0 0, 50% 50%, 0 100%, 100% 100%, 50% 50%, 100% 0);
+      z-index: 1;
+      pointer-events: none;
     }
 
     .card-preview {
@@ -426,7 +451,6 @@
         width: 38px;
       }
 
-      /* Reubicación en móviles */
       .picnic-cesta { top: 12%; left: 6%; }
       .picnic-tarot { top: 50%; left: 4%; }
       .picnic-pastel { top: 82%; left: 6%; }
@@ -443,11 +467,13 @@
 </head>
 <body>
 
+  <!-- ESQUINEROS FLORALES EN LAS 4 ESQUINAS -->
   <img src="esquinero.png" alt="Decoración floral" class="corner-floral-img top-left">
   <img src="esquinero.png" alt="Decoración floral" class="corner-floral-img top-right">
   <img src="esquinero.png" alt="Decoración floral" class="corner-floral-img bottom-left">
   <img src="esquinero.png" alt="Decoración floral" class="corner-floral-img bottom-right">
 
+  <!-- ELEMENTOS DE PICNIC PNG FLOTANDO -->
   <img src="cesta.png" alt="Cesta" class="bg-floating-img picnic-cesta">
   <img src="tarot.png" alt="Tarot" class="bg-floating-img picnic-tarot">
   <img src="pastel.png" alt="Pastel" class="bg-floating-img picnic-pastel">
@@ -456,6 +482,7 @@
   <img src="fruta.png" alt="Fruta" class="bg-floating-img picnic-fruta">
   <img src="tea.png" alt="Té" class="bg-floating-img picnic-tea">
 
+  <!-- PÉTALOS PNG EN LLUVIA CONTINUA -->
   <img src="petalo1.png" alt="Pétalo" class="petal-img" style="left: 8%; animation-delay: 0s;">
   <img src="petalo2.png" alt="Pétalo" class="petal-img" style="left: 24%; animation-delay: 3s;">
   <img src="petalo3.png" alt="Pétalo" class="petal-img" style="left: 45%; animation-delay: 1.2s;">
