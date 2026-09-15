@@ -5,8 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>¡Te espero en mi picnic! 🧺🌸</title>
   
-  <!-- Librería de confeti para efectos visuales -->
-  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <!-- Tipografías de Google Fonts: 'Playfair Display' para el título y 'Dancing Script' para la estampita manuscrita -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Playfair+Display:ital,wght@0,700;1,600&display=swap" rel="stylesheet">
 
   <style>
     * {
@@ -27,7 +29,7 @@
       position: relative;
     }
 
-    /* Esquinas armónicas con lazos */
+    /* Esquinas decorativas */
     .corner-floral {
       position: fixed;
       font-size: 2.2rem;
@@ -40,7 +42,7 @@
     .bottom-left { bottom: 15px; left: 20px; }
     .bottom-right { bottom: 15px; right: 20px; }
 
-    /* Elementos flotantes de picnic */
+    /* Elementos flotantes */
     .bg-flower {
       position: fixed;
       pointer-events: none;
@@ -85,23 +87,25 @@
       width: 100%;
     }
 
+    /* TÍTULO ELEGANTE ESTILO EDITORIAL / BOOK */
     .header-title {
+      font-family: 'Playfair Display', Georgia, serif;
       color: #880e4f;
-      font-size: clamp(1.6rem, 5vw, 2.3rem);
-      font-weight: 800;
+      font-size: clamp(1.8rem, 5.5vw, 2.6rem);
+      font-weight: 700;
+      font-style: italic;
       margin-bottom: 12px;
       text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.9);
-      letter-spacing: -0.3px;
+      letter-spacing: 0.2px;
     }
 
     .instructions {
-      margin-bottom: 25px;
+      margin-bottom: 30px;
       color: #880e4f;
       font-weight: 700;
-      font-size: clamp(0.95rem, 3.5vw, 1.1rem);
-      background: rgba(255, 240, 245, 0.75);
-      backdrop-filter: blur(4px);
-      border: 1.5px solid #f8bbd0;
+      font-size: clamp(0.9rem, 3.2vw, 1.05rem);
+      background: rgba(255, 245, 247, 0.85);
+      border: 1px solid #f8bbd0;
       padding: 10px 22px;
       border-radius: 30px;
       display: inline-flex;
@@ -109,6 +113,7 @@
       gap: 8px;
       box-shadow: 0 4px 15px rgba(136, 14, 79, 0.08);
       transition: transform 0.2s ease;
+      cursor: pointer;
     }
 
     .instructions:hover {
@@ -148,77 +153,118 @@
       transform: scaleX(-1);
     }
 
-    /* Sobre interactivo */
+    /* --- SOBRE ROSA CON ROTACIÓN RECTA Y LIMPIA --- */
     .envelope-container {
       position: relative;
-      width: min(320px, 85vw);
-      height: min(220px, 58vw);
-      background-color: #f06292;
+      width: 310px;
+      height: 200px;
+      background: #f7cbd4;
       border-radius: 12px;
-      box-shadow: 0 15px 35px rgba(136, 14, 79, 0.25);
+      box-shadow: 0 15px 35px rgba(136, 14, 79, 0.22);
       cursor: pointer;
       perspective: 1000px;
       flex-shrink: 0;
+      border: 1px solid #f48fb1;
+      transform-style: preserve-3d;
     }
 
+    /* Solapa alineada en el eje exacto (sin ladeos) */
     .flap {
       position: absolute;
       top: 0;
       left: 0;
-      width: 0;
-      height: 0;
-      border-left: calc(min(320px, 85vw) / 2) solid transparent;
-      border-right: calc(min(320px, 85vw) / 2) solid transparent;
-      border-top: calc(min(220px, 58vw) * 0.58) solid #ec407a;
-      transform-origin: top;
-      transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-      z-index: 3;
+      width: 100%;
+      height: 105px;
+      background: linear-gradient(180deg, #f8bbd0 0%, #f48fb1 100%);
+      clip-path: polygon(0 0, 100% 0, 50% 100%);
+      transform-origin: top center;
+      transition: transform 0.55s ease-in-out;
+      z-index: 4;
+      backface-visibility: hidden;
+      will-change: transform;
     }
 
-    .seal {
+    /* ESTAMPITA CON TIPOGRAFÍA CURSIVA MANUSCRITA */
+    .recipient-tag {
       position: absolute;
-      top: 42%;
+      bottom: 20px;
+      right: 16px;
+      background: #fffdf9;
+      border: 1.5px solid #f8bbd0;
+      padding: 6px 16px;
+      border-radius: 8px;
+      box-shadow: 0 3px 10px rgba(136, 14, 79, 0.12);
+      font-family: 'Dancing Script', cursive; /* Fuente hecha a mano */
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #880e4f;
+      z-index: 5;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+      outline: 1px dashed #f48fb1;
+      outline-offset: -4px;
+    }
+
+    /* SELLO DE CERA SVG REALISTA */
+    .seal-svg-container {
+      position: absolute;
+      top: 60px;
       left: 50%;
       transform: translateX(-50%);
-      width: 44px;
-      height: 44px;
-      background: #c2185b;
-      color: #fff;
-      border-radius: 50%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 1.3rem;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-      z-index: 4;
-      transition: opacity 0.3s ease;
+      width: 58px;
+      height: 58px;
+      z-index: 6;
+      pointer-events: none;
+      filter: drop-shadow(0 4px 8px rgba(136, 14, 79, 0.35));
     }
 
+    .seal-half {
+      position: absolute;
+      top: 0;
+      width: 58px;
+      height: 58px;
+      transition: transform 0.4s ease-out, opacity 0.3s ease;
+      will-change: transform, opacity;
+    }
+
+    .seal-left-half {
+      left: 0;
+      clip-path: polygon(0 0, 50% 0, 44% 28%, 56% 58%, 46% 100%, 0 100%);
+    }
+
+    .seal-right-half {
+      left: 0;
+      clip-path: polygon(50% 0, 100% 0, 100% 100%, 46% 100%, 56% 58%, 44% 28%);
+    }
+
+    /* Bolsillo frontal */
     .pocket {
       position: absolute;
       bottom: 0;
       left: 0;
-      width: 0;
-      height: 0;
-      border-left: calc(min(320px, 85vw) / 2) solid #f8bbd0;
-      border-right: calc(min(320px, 85vw) / 2) solid #f8bbd0;
-      border-bottom: calc(min(220px, 58vw) * 0.52) solid #f48fb1;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(180deg, #f8bbd0 0%, #ec407a 100%);
       border-radius: 0 0 12px 12px;
-      z-index: 2;
+      clip-path: polygon(0 0, 50% 50%, 100% 0, 100% 100%, 0 100%);
+      z-index: 3;
+      pointer-events: none;
+      box-shadow: inset 0 2px 6px rgba(255, 255, 255, 0.4);
     }
 
     .card-preview {
       position: absolute;
-      bottom: 12px;
-      left: 7.5%;
-      width: 85%;
-      height: 180px;
-      background: #fff;
-      border-radius: 8px;
-      z-index: 1;
+      bottom: 8px;
+      left: 18px;
+      width: 272px;
+      height: 135px;
+      background: #ffffff;
+      border-radius: 8px 8px 0 0;
+      z-index: 2;
       overflow: hidden;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      transition: transform 0.6s ease;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+      transition: transform 0.5s cubic-bezier(0.34, 1.25, 0.64, 1) 0.15s;
+      will-change: transform;
     }
 
     .card-preview img {
@@ -228,35 +274,46 @@
       object-position: top;
     }
 
-    .envelope-container.open .flap {
-      transform: rotateX(180deg);
-      z-index: 0;
-    }
+    /* --- APERTURA RECTA Y FLUIDA --- */
 
-    .envelope-container.open .seal {
+    .envelope-container.open .seal-left-half {
+      transform: translateX(-16px) translateY(-2px);
       opacity: 0;
     }
 
-    .envelope-container.open .card-preview {
-      transform: translateY(-80px);
+    .envelope-container.open .seal-right-half {
+      transform: translateX(16px) translateY(2px);
+      opacity: 0;
     }
 
-    /* Modal estilo Polaroid/Marco Rosa */
+    .envelope-container.open .flap {
+      transform: rotateX(180deg);
+      z-index: 1;
+    }
+
+    .envelope-container.open .card-preview {
+      transform: translateY(-50px);
+    }
+
+    .envelope-container.open .recipient-tag {
+      opacity: 0;
+    }
+
+    /* Modal emergente */
     .modal-overlay {
       position: fixed;
       top: 0;
       left: 0;
       width: 100vw;
       height: 100vh;
-      background: rgba(136, 14, 79, 0.6);
-      backdrop-filter: blur(6px);
+      background: rgba(136, 14, 79, 0.65);
       display: flex;
       justify-content: center;
       align-items: center;
       z-index: 100;
       opacity: 0;
       pointer-events: none;
-      transition: opacity 0.4s ease;
+      transition: opacity 0.35s ease;
       padding: 15px;
     }
 
@@ -269,16 +326,17 @@
       position: relative;
       max-width: 440px;
       width: 100%;
-      background: linear-gradient(145deg, #fff5f8, #fce4ec);
+      background: #fffdf9;
       border: 3px solid #f8bbd0;
       border-radius: 20px;
-      padding: 10px;
-      box-shadow: 0 20px 40px rgba(136, 14, 79, 0.35);
-      transform: scale(0.8) translateY(30px);
-      transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      padding: 12px;
+      box-shadow: 0 20px 45px rgba(136, 14, 79, 0.35);
+      transform: scale(0.85) translateY(20px);
+      transition: transform 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
       display: flex;
       justify-content: center;
       align-items: center;
+      will-change: transform;
     }
 
     .modal-overlay.active .modal-content {
@@ -288,7 +346,7 @@
     .modal-content img {
       width: 100%;
       height: auto;
-      max-height: 80vh;
+      max-height: 82vh;
       object-fit: contain;
       border-radius: 12px;
       display: block;
@@ -298,8 +356,8 @@
       position: absolute;
       top: -14px;
       right: -14px;
-      width: 38px;
-      height: 38px;
+      width: 40px;
+      height: 40px;
       background-color: #ec407a;
       color: white;
       border: 2px solid #ffffff;
@@ -307,7 +365,7 @@
       font-weight: bold;
       border-radius: 50%;
       cursor: pointer;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.25);
       display: flex;
       justify-content: center;
       align-items: center;
@@ -326,6 +384,15 @@
         gap: 15px;
       }
 
+      .envelope-container {
+        width: 280px;
+        height: 185px;
+      }
+
+      .card-preview {
+        width: 244px;
+      }
+
       .character-gif {
         width: 85px;
         max-height: 100px;
@@ -339,13 +406,11 @@
 </head>
 <body>
 
-  <!-- Esquinas armónicas con lazos -->
   <div class="corner-floral top-left">🎀</div>
   <div class="corner-floral top-right">🎀</div>
   <div class="corner-floral bottom-left">🎀</div>
   <div class="corner-floral bottom-right">🎀</div>
 
-  <!-- Elementos flotantes de picnic -->
   <div class="bg-flower f1">🧺</div>
   <div class="bg-flower f2">🍰</div>
   <div class="bg-flower f3">🥐</div>
@@ -353,7 +418,6 @@
   <div class="bg-flower f5">🥪</div>
   <div class="bg-flower f6">👒</div>
 
-  <!-- Lluvia de flores -->
   <div class="petal" style="left: 8%; animation-delay: 0s;">🌸</div>
   <div class="petal" style="left: 28%; animation-delay: 3s;">🌺</div>
   <div class="petal" style="left: 50%; animation-delay: 1.5s;">🏵️</div>
@@ -361,11 +425,12 @@
   <div class="petal" style="left: 88%; animation-delay: 2s;">🌺</div>
 
   <div class="container">
+    <!-- Título con tipografía editorial Playfair Display -->
     <h1 class="header-title">🌸 ¡Te espero en mi picnic! 🌸</h1>
     
     <div class="instructions" id="hint">
       <span class="instructions-icon">💌</span>
-      <span>Toca el sobre para abrir tu invitación</span>
+      <span>Rompe el sello para abrir tu invitación</span>
     </div>
     
     <div class="invitation-wrapper">
@@ -373,10 +438,40 @@
 
       <div class="envelope-container" id="envelope">
         <div class="flap"></div>
-        <div class="seal">🌸</div>
+        
+        <!-- Estampita manuscrita "Para: [Nombre]" -->
+        <div class="recipient-tag" id="recipient-tag">Para: Ti</div>
+
+        <!-- Sello de cera SVG -->
+        <div class="seal-svg-container">
+          <div class="seal-half seal-left-half">
+            <svg viewBox="0 0 100 100" width="100%" height="100%">
+              <defs>
+                <radialGradient id="waxGrad" cx="35%" cy="35%" r="65%">
+                  <stop offset="0%" stop-color="#f48fb1"/>
+                  <stop offset="60%" stop-color="#c2185b"/>
+                  <stop offset="100%" stop-color="#880e4f"/>
+                </radialGradient>
+              </defs>
+              <path d="M50 6 C75 4, 96 22, 94 48 C92 74, 76 95, 48 94 C20 93, 4 72, 6 46 C8 20, 25 8, 50 6 Z" fill="url(#waxGrad)"/>
+              <circle cx="50" cy="50" r="36" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="2.5" stroke-dasharray="4 2"/>
+              <path d="M50 36 C45 28, 32 30, 32 42 C32 54, 50 66, 50 66 C50 66, 68 54, 68 42 C68 30, 55 28, 50 36 Z" fill="none" stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity="0.9"/>
+            </svg>
+          </div>
+
+          <div class="seal-half seal-right-half">
+            <svg viewBox="0 0 100 100" width="100%" height="100%">
+              <path d="M50 6 C75 4, 96 22, 94 48 C92 74, 76 95, 48 94 C20 93, 4 72, 6 46 C8 20, 25 8, 50 6 Z" fill="url(#waxGrad)"/>
+              <circle cx="50" cy="50" r="36" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="2.5" stroke-dasharray="4 2"/>
+              <path d="M50 36 C45 28, 32 30, 32 42 C32 54, 50 66, 50 66 C50 66, 68 54, 68 42 C68 30, 55 28, 50 36 Z" fill="none" stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity="0.9"/>
+            </svg>
+          </div>
+        </div>
+        
         <div class="card-preview">
           <img class="invitation-img" src="Invitacion-jian.png" alt="Invitación">
         </div>
+
         <div class="pocket"></div>
       </div>
 
@@ -394,7 +489,10 @@
   <script>
     const urlParams = new URLSearchParams(window.location.search);
     const imgParam = urlParams.get('invitacion');
+    const nameParam = urlParams.get('para') || urlParams.get('nombre');
+    
     const invitationImgs = document.querySelectorAll('.invitation-img');
+    const recipientTag = document.getElementById('recipient-tag');
 
     if (imgParam) {
       invitationImgs.forEach(img => {
@@ -402,47 +500,28 @@
       });
     }
 
+    // Extracción limpia del nombre dinámico
+    if (nameParam) {
+      recipientTag.textContent = `Para: ${nameParam}`;
+    } else if (imgParam) {
+      // e.g. "Invitacion-valeria.png" -> "Valeria"
+      const fileName = imgParam.split('/').pop().split('.')[0];
+      const cleanName = fileName.replace(/^invitacion[-_]?/i, '');
+      if (cleanName) {
+        recipientTag.textContent = `Para: ${cleanName.charAt(0).toUpperCase() + cleanName.slice(1)}`;
+      }
+    }
+
     const envelope = document.getElementById('envelope');
     const modal = document.getElementById('modal');
     const closeModal = document.getElementById('close-modal');
-
-    // Efecto elegante de Destellos Dorados + Estrellitas Flotantes
-    function triggerElegantSparkles() {
-      const duration = 2.5 * 1000;
-      const animationEnd = Date.now() + duration;
-
-      // Colores sofisticados: Rosa Gold, Dorado, Rosa Pastel y Blanco
-      const elegantColors = ['#ffd700', '#f48fb1', '#ffffff', '#f8bbd0', '#ffb74d'];
-
-      const interval = setInterval(function() {
-        const timeLeft = animationEnd - Date.now();
-
-        if (timeLeft <= 0) {
-          return clearInterval(interval);
-        }
-
-        // Lluvia sutil de estrellas desde ambos lados de la pantalla
-        confetti({
-          particleCount: 4,
-          startVelocity: 15,
-          ticks: 250,
-          origin: { x: Math.random(), y: Math.random() - 0.2 },
-          colors: elegantColors,
-          shapes: ['star', 'circle'],
-          scalar: 1.1,
-          gravity: 0.4,
-          drift: 0.2
-        });
-      }, 80);
-    }
 
     envelope.addEventListener('click', () => {
       envelope.classList.add('open');
       
       setTimeout(() => {
-        triggerElegantSparkles();
         modal.classList.add('active');
-      }, 450);
+      }, 550);
     });
 
     closeModal.addEventListener('click', () => {
