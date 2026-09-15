@@ -40,7 +40,7 @@
       pointer-events: none;
       z-index: 2;
       user-select: none;
-      filter: drop-shadow(0 4px 10px rgba(136, 14, 79, 0.15));
+      filter: drop-shadow(0 4px 10px rgba(130, 1, 46, 0.15));
     }
 
     .top-left {
@@ -75,7 +75,7 @@
       pointer-events: none;
       user-select: none;
       animation: floatItem 6.5s ease-in-out infinite;
-      filter: drop-shadow(0 6px 12px rgba(136, 14, 79, 0.2));
+      filter: drop-shadow(0 6px 12px rgba(130, 1, 46, 0.2));
       z-index: 2;
     }
 
@@ -103,7 +103,7 @@
       pointer-events: none;
       z-index: 1;
       animation: fallPetal 9s linear infinite;
-      filter: drop-shadow(0 2px 5px rgba(136, 14, 79, 0.15));
+      filter: drop-shadow(0 2px 5px rgba(130, 1, 46, 0.15));
     }
 
     @keyframes fallPetal {
@@ -129,9 +129,10 @@
       width: 100%;
     }
 
+    /* TÍTULO CON EL COLOR 82012E */
     .header-title {
       font-family: 'Playfair Display', Georgia, serif;
-      color: #880e4f;
+      color: #82012E;
       font-size: clamp(1.7rem, 5.5vw, 2.6rem);
       font-weight: 700;
       font-style: italic;
@@ -142,7 +143,7 @@
 
     .instructions {
       margin-bottom: 30px;
-      color: #880e4f;
+      color: #82012E;
       font-weight: 700;
       font-size: clamp(0.88rem, 3.2vw, 1.05rem);
       background: rgba(255, 253, 249, 0.92);
@@ -152,7 +153,7 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      box-shadow: 0 4px 15px rgba(136, 14, 79, 0.08);
+      box-shadow: 0 4px 15px rgba(130, 1, 46, 0.08);
       transition: transform 0.2s ease;
       cursor: pointer;
     }
@@ -194,14 +195,14 @@
       transform: scaleX(-1);
     }
 
-    /* --- SOBRE CREMA CON PLIEGUES Y TEXTURA DEFINIDA --- */
+    /* --- SOBRE CREMA --- */
     .envelope-container {
       position: relative;
       width: min(310px, 82vw);
       height: min(200px, 53vw);
       background: #e6dcce;
       border-radius: 12px;
-      box-shadow: 0 15px 35px rgba(136, 14, 79, 0.22);
+      box-shadow: 0 15px 35px rgba(130, 1, 46, 0.22);
       cursor: pointer;
       perspective: 1000px;
       flex-shrink: 0;
@@ -209,7 +210,6 @@
       transform-style: preserve-3d;
     }
 
-    /* Solapa triangular superior destacada */
     .flap {
       position: absolute;
       top: 0;
@@ -227,7 +227,6 @@
       border-bottom: 1.5px solid #d4c3af;
     }
 
-    /* Estampita "Para: Ti" */
     .recipient-tag {
       position: absolute;
       bottom: 12%;
@@ -240,12 +239,12 @@
       font-family: 'Dancing Script', cursive;
       font-size: clamp(1.05rem, 3.5vw, 1.25rem);
       font-weight: 700;
-      color: #880e4f;
+      color: #82012E;
       z-index: 5;
       pointer-events: none;
       transition: opacity 0.3s ease;
       transform: rotate(-3deg);
-      outline: 1px dashed #ad1457;
+      outline: 1px dashed #82012E;
       outline-offset: -4px;
     }
 
@@ -258,7 +257,7 @@
       height: min(58px, 18vw);
       z-index: 6;
       pointer-events: none;
-      filter: drop-shadow(0 4px 8px rgba(136, 14, 79, 0.35));
+      filter: drop-shadow(0 4px 8px rgba(130, 1, 46, 0.35));
     }
 
     .seal-half {
@@ -280,7 +279,6 @@
       clip-path: polygon(50% 0, 100% 0, 100% 100%, 46% 100%, 56% 58%, 44% 28%);
     }
 
-    /* Bolsillo frontal con pliegues marcados */
     .pocket {
       position: absolute;
       bottom: 0;
@@ -296,7 +294,6 @@
       border-top: 1px solid #d2c0ac;
     }
 
-    /* Pliegues laterales visibles */
     .envelope-container::before {
       content: '';
       position: absolute;
@@ -363,7 +360,7 @@
       left: 0;
       width: 100vw;
       height: 100vh;
-      background: rgba(136, 14, 79, 0.65);
+      background: rgba(130, 1, 46, 0.65);
       display: flex;
       justify-content: center;
       align-items: center;
@@ -387,7 +384,7 @@
       border: 3px solid #f8bbd0;
       border-radius: 20px;
       padding: 10px;
-      box-shadow: 0 20px 45px rgba(136, 14, 79, 0.35);
+      box-shadow: 0 20px 45px rgba(130, 1, 46, 0.35);
       transform: scale(0.85) translateY(20px);
       transition: transform 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
       display: flex;
@@ -415,7 +412,7 @@
       right: -12px;
       width: 38px;
       height: 38px;
-      background-color: #ec407a;
+      background-color: #82012E;
       color: white;
       border: 2px solid #ffffff;
       font-size: 1rem;
@@ -431,7 +428,7 @@
     }
 
     .close-btn:hover {
-      background-color: #c2185b;
+      background-color: #5c0020;
       transform: scale(1.15) rotate(90deg);
     }
 
@@ -506,27 +503,28 @@
         
         <div class="recipient-tag" id="recipient-tag">Para: Ti</div>
 
+        <!-- SELLO DE CERA CÁLIDO SVG (CON EL DEGRADADO CÁLIDO MEJORADO) -->
         <div class="seal-svg-container">
           <div class="seal-half seal-left-half">
             <svg viewBox="0 0 100 100" width="100%" height="100%">
               <defs>
-                <radialGradient id="waxGrad" cx="35%" cy="35%" r="65%">
+                <radialGradient id="waxGradWarm" cx="35%" cy="35%" r="65%">
                   <stop offset="0%" stop-color="#f48fb1"/>
-                  <stop offset="60%" stop-color="#c2185b"/>
-                  <stop offset="100%" stop-color="#880e4f"/>
+                  <stop offset="55%" stop-color="#b71c1c"/>
+                  <stop offset="100%" stop-color="#82012E"/>
                 </radialGradient>
               </defs>
-              <path d="M50 6 C75 4, 96 22, 94 48 C92 74, 76 95, 48 94 C20 93, 4 72, 6 46 C8 20, 25 8, 50 6 Z" fill="url(#waxGrad)"/>
+              <path d="M50 6 C75 4, 96 22, 94 48 C92 74, 76 95, 48 94 C20 93, 4 72, 6 46 C8 20, 25 8, 50 6 Z" fill="url(#waxGradWarm)"/>
               <circle cx="50" cy="50" r="36" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="2.5" stroke-dasharray="4 2"/>
-              <path d="M50 36 C45 28, 32 30, 32 42 C32 54, 50 66, 50 66 C50 66, 68 54, 68 42 C68 30, 55 28, 50 36 Z" fill="none" stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity="0.9"/>
+              <path d="M50 36 C45 28, 32 30, 32 42 C32 54, 50 66, 50 66 C50 66, 68 54, 68 42 C68 30, 55 28, 50 36 Z" fill="none" stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity="0.95"/>
             </svg>
           </div>
 
           <div class="seal-half seal-right-half">
             <svg viewBox="0 0 100 100" width="100%" height="100%">
-              <path d="M50 6 C75 4, 96 22, 94 48 C92 74, 76 95, 48 94 C20 93, 4 72, 6 46 C8 20, 25 8, 50 6 Z" fill="url(#waxGrad)"/>
+              <path d="M50 6 C75 4, 96 22, 94 48 C92 74, 76 95, 48 94 C20 93, 4 72, 6 46 C8 20, 25 8, 50 6 Z" fill="url(#waxGradWarm)"/>
               <circle cx="50" cy="50" r="36" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="2.5" stroke-dasharray="4 2"/>
-              <path d="M50 36 C45 28, 32 30, 32 42 C32 54, 50 66, 50 66 C50 66, 68 54, 68 42 C68 30, 55 28, 50 36 Z" fill="none" stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity="0.9"/>
+              <path d="M50 36 C45 28, 32 30, 32 42 C32 54, 50 66, 50 66 C50 66, 68 54, 68 42 C68 30, 55 28, 50 36 Z" fill="none" stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity="0.95"/>
             </svg>
           </div>
         </div>
