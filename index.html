@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>¡Te espero en mi picnic! 🧺🌸</title>
   
-  <!-- Tipografías de Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Playfair+Display:ital,wght@0,700;1,600&display=swap" rel="stylesheet">
@@ -444,13 +443,11 @@
 </head>
 <body>
 
-  <!-- ESQUINEROS FLORALES EN LAS 4 ESQUINAS -->
   <img src="esquinero.png" alt="Decoración floral" class="corner-floral-img top-left">
   <img src="esquinero.png" alt="Decoración floral" class="corner-floral-img top-right">
   <img src="esquinero.png" alt="Decoración floral" class="corner-floral-img bottom-left">
   <img src="esquinero.png" alt="Decoración floral" class="corner-floral-img bottom-right">
 
-  <!-- ELEMENTOS DE PICNIC PNG FLOTANDO -->
   <img src="cesta.png" alt="Cesta" class="bg-floating-img picnic-cesta">
   <img src="tarot.png" alt="Tarot" class="bg-floating-img picnic-tarot">
   <img src="pastel.png" alt="Pastel" class="bg-floating-img picnic-pastel">
@@ -459,7 +456,6 @@
   <img src="fruta.png" alt="Fruta" class="bg-floating-img picnic-fruta">
   <img src="tea.png" alt="Té" class="bg-floating-img picnic-tea">
 
-  <!-- PÉTALOS PNG EN LLUVIA CONTINUA -->
   <img src="petalo1.png" alt="Pétalo" class="petal-img" style="left: 8%; animation-delay: 0s;">
   <img src="petalo2.png" alt="Pétalo" class="petal-img" style="left: 24%; animation-delay: 3s;">
   <img src="petalo3.png" alt="Pétalo" class="petal-img" style="left: 45%; animation-delay: 1.2s;">
@@ -569,6 +565,13 @@
 
     modal.addEventListener('click', (e) => {
       if (e.target === modal) {
+        modal.classList.remove('active');
+        envelope.classList.remove('open');
+      }
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modal.classList.contains('active')) {
         modal.classList.remove('active');
         envelope.classList.remove('open');
       }
