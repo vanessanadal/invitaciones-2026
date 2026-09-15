@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>¡Te espero en mi picnic! 🧺🌸</title>
   
-  <!-- Tipografías de Google Fonts: 'Playfair Display' para el título y 'Dancing Script' para la estampita manuscrita -->
+  <!-- Tipografías de Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Playfair+Display:ital,wght@0,700;1,600&display=swap" rel="stylesheet">
@@ -29,54 +29,93 @@
       position: relative;
     }
 
-    /* Esquinas decorativas */
-    .corner-floral {
+    /* --- ESQUINEROS FLORALES PNG --- */
+    .corner-floral-img {
       position: fixed;
-      font-size: 2.2rem;
+      width: clamp(100px, 18vw, 210px);
+      height: auto;
       pointer-events: none;
       z-index: 2;
       user-select: none;
+      filter: drop-shadow(0 4px 10px rgba(136, 14, 79, 0.15));
     }
-    .top-left { top: 15px; left: 20px; }
-    .top-right { top: 15px; right: 20px; }
-    .bottom-left { bottom: 15px; left: 20px; }
-    .bottom-right { bottom: 15px; right: 20px; }
 
-    /* Elementos flotantes */
-    .bg-flower {
+    .top-left {
+      top: 0;
+      left: 0;
+      transform: scaleY(-1);
+    }
+
+    .top-right {
+      top: 0;
+      right: 0;
+      transform: scale(-1);
+    }
+
+    .bottom-left {
+      bottom: 0;
+      left: 0;
+    }
+
+    .bottom-right {
+      bottom: 0;
+      right: 0;
+      transform: scaleX(-1);
+    }
+
+    /* --- ELEMENTOS FLOTANTES DE PICNIC EN PNG --- */
+    .bg-floating-img {
       position: fixed;
+      width: clamp(45px, 6vw, 65px);
+      height: auto;
+      object-fit: contain;
       pointer-events: none;
       user-select: none;
-      animation: float 7s ease-in-out infinite;
-      opacity: 0.8;
-      z-index: 1;
+      animation: floatItem 6.5s ease-in-out infinite;
+      filter: drop-shadow(0 6px 12px rgba(136, 14, 79, 0.2));
+      z-index: 2;
     }
 
-    .f1 { top: 12%; left: 12%; font-size: 2.2rem; animation-delay: 0s; }
-    .f2 { top: 65%; left: 8%; font-size: 2.5rem; animation-delay: 2s; }
-    .f3 { top: 20%; right: 12%; font-size: 2.4rem; animation-delay: 1s; }
-    .f4 { top: 70%; right: 10%; font-size: 2.6rem; animation-delay: 3s; }
-    .f5 { top: 45%; left: 4%; font-size: 2.1rem; animation-delay: 4s; }
-    .f6 { top: 50%; right: 5%; font-size: 2.3rem; animation-delay: 2.5s; }
+    /* Posicionamiento simétrico a ambos lados */
+    .picnic-cesta { top: 18%; left: 19%; animation-delay: 0s; }
+    .picnic-tarot { top: 46%; left: 13%; animation-delay: 2.5s; }
+    .picnic-pastel { top: 74%; left: 18%; animation-delay: 1.5s; }
 
-    @keyframes float {
+    .picnic-croissant { top: 18%; right: 19%; animation-delay: 1s; }
+    .picnic-fruta { top: 46%; right: 13%; animation-delay: 3.5s; }
+    .picnic-tea { top: 74%; right: 18%; animation-delay: 2s; }
+
+    @keyframes floatItem {
       0%, 100% { transform: translateY(0px) rotate(0deg); }
-      50% { transform: translateY(-18px) rotate(10deg); }
+      50% { transform: translateY(-16px) rotate(8deg); }
     }
 
-    /* Lluvia de flores */
-    .petal {
+    /* --- LLUVIAS DE PÉTALOS PNG --- */
+    .petal-img {
       position: fixed;
-      top: -10%;
-      font-size: 1.6rem;
+      top: -12%;
+      width: clamp(26px, 4vw, 36px);
+      height: clamp(26px, 4vw, 36px);
+      object-fit: contain;
       pointer-events: none;
       z-index: 1;
-      animation: fall 10s linear infinite;
+      animation: fallPetal 9s linear infinite;
+      filter: drop-shadow(0 2px 5px rgba(136, 14, 79, 0.15));
     }
 
-    @keyframes fall {
-      0% { transform: translateY(0) rotate(0deg); opacity: 1; }
-      100% { transform: translateY(105vh) rotate(360deg); opacity: 0; }
+    @keyframes fallPetal {
+      0% {
+        transform: translateY(0) rotate(0deg) translateX(0);
+        opacity: 0.9;
+      }
+      50% {
+        transform: translateY(55vh) rotate(180deg) translateX(25px);
+        opacity: 0.85;
+      }
+      100% {
+        transform: translateY(110vh) rotate(360deg) translateX(-15px);
+        opacity: 0;
+      }
     }
 
     .container {
@@ -87,11 +126,10 @@
       width: 100%;
     }
 
-    /* TÍTULO ELEGANTE ESTILO EDITORIAL / BOOK */
     .header-title {
       font-family: 'Playfair Display', Georgia, serif;
       color: #880e4f;
-      font-size: clamp(1.8rem, 5.5vw, 2.6rem);
+      font-size: clamp(1.7rem, 5.5vw, 2.6rem);
       font-weight: 700;
       font-style: italic;
       margin-bottom: 12px;
@@ -103,8 +141,8 @@
       margin-bottom: 30px;
       color: #880e4f;
       font-weight: 700;
-      font-size: clamp(0.9rem, 3.2vw, 1.05rem);
-      background: rgba(255, 245, 247, 0.85);
+      font-size: clamp(0.88rem, 3.2vw, 1.05rem);
+      background: rgba(255, 245, 247, 0.88);
       border: 1px solid #f8bbd0;
       padding: 10px 22px;
       border-radius: 30px;
@@ -140,7 +178,7 @@
     }
 
     .character-gif {
-      width: 110px;
+      width: clamp(75px, 12vw, 110px);
       height: auto;
       max-height: 130px;
       object-fit: contain;
@@ -153,11 +191,11 @@
       transform: scaleX(-1);
     }
 
-    /* --- SOBRE ROSA CON ROTACIÓN RECTA Y LIMPIA --- */
+    /* --- SOBRE ROSA RESPONSIVE --- */
     .envelope-container {
       position: relative;
-      width: 310px;
-      height: 200px;
+      width: min(310px, 82vw);
+      height: min(200px, 53vw);
       background: #f7cbd4;
       border-radius: 12px;
       box-shadow: 0 15px 35px rgba(136, 14, 79, 0.22);
@@ -168,13 +206,12 @@
       transform-style: preserve-3d;
     }
 
-    /* Solapa alineada en el eje exacto (sin ladeos) */
     .flap {
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
-      height: 105px;
+      height: 52.5%;
       background: linear-gradient(180deg, #f8bbd0 0%, #f48fb1 100%);
       clip-path: polygon(0 0, 100% 0, 50% 100%);
       transform-origin: top center;
@@ -184,18 +221,17 @@
       will-change: transform;
     }
 
-    /* ESTAMPITA CON TIPOGRAFÍA CURSIVA MANUSCRITA */
     .recipient-tag {
       position: absolute;
-      bottom: 20px;
-      right: 16px;
+      bottom: 10%;
+      right: 5%;
       background: #fffdf9;
       border: 1.5px solid #f8bbd0;
-      padding: 6px 16px;
+      padding: 5px 14px;
       border-radius: 8px;
       box-shadow: 0 3px 10px rgba(136, 14, 79, 0.12);
-      font-family: 'Dancing Script', cursive; /* Fuente hecha a mano */
-      font-size: 1.25rem;
+      font-family: 'Dancing Script', cursive;
+      font-size: clamp(1.05rem, 3.5vw, 1.25rem);
       font-weight: 700;
       color: #880e4f;
       z-index: 5;
@@ -205,14 +241,13 @@
       outline-offset: -4px;
     }
 
-    /* SELLO DE CERA SVG REALISTA */
     .seal-svg-container {
       position: absolute;
-      top: 60px;
+      top: 30%;
       left: 50%;
       transform: translateX(-50%);
-      width: 58px;
-      height: 58px;
+      width: min(58px, 18vw);
+      height: min(58px, 18vw);
       z-index: 6;
       pointer-events: none;
       filter: drop-shadow(0 4px 8px rgba(136, 14, 79, 0.35));
@@ -221,8 +256,8 @@
     .seal-half {
       position: absolute;
       top: 0;
-      width: 58px;
-      height: 58px;
+      width: 100%;
+      height: 100%;
       transition: transform 0.4s ease-out, opacity 0.3s ease;
       will-change: transform, opacity;
     }
@@ -237,7 +272,6 @@
       clip-path: polygon(50% 0, 100% 0, 100% 100%, 46% 100%, 56% 58%, 44% 28%);
     }
 
-    /* Bolsillo frontal */
     .pocket {
       position: absolute;
       bottom: 0;
@@ -254,10 +288,10 @@
 
     .card-preview {
       position: absolute;
-      bottom: 8px;
-      left: 18px;
-      width: 272px;
-      height: 135px;
+      bottom: 4%;
+      left: 6%;
+      width: 88%;
+      height: 67%;
       background: #ffffff;
       border-radius: 8px 8px 0 0;
       z-index: 2;
@@ -274,8 +308,7 @@
       object-position: top;
     }
 
-    /* --- APERTURA RECTA Y FLUIDA --- */
-
+    /* --- APERTURA --- */
     .envelope-container.open .seal-left-half {
       transform: translateX(-16px) translateY(-2px);
       opacity: 0;
@@ -292,14 +325,14 @@
     }
 
     .envelope-container.open .card-preview {
-      transform: translateY(-50px);
+      transform: translateY(-48px);
     }
 
     .envelope-container.open .recipient-tag {
       opacity: 0;
     }
 
-    /* Modal emergente */
+    /* Modal emergente responsive */
     .modal-overlay {
       position: fixed;
       top: 0;
@@ -314,7 +347,7 @@
       opacity: 0;
       pointer-events: none;
       transition: opacity 0.35s ease;
-      padding: 15px;
+      padding: 12px;
     }
 
     .modal-overlay.active {
@@ -329,7 +362,7 @@
       background: #fffdf9;
       border: 3px solid #f8bbd0;
       border-radius: 20px;
-      padding: 12px;
+      padding: 10px;
       box-shadow: 0 20px 45px rgba(136, 14, 79, 0.35);
       transform: scale(0.85) translateY(20px);
       transition: transform 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -354,14 +387,14 @@
 
     .close-btn {
       position: absolute;
-      top: -14px;
-      right: -14px;
-      width: 40px;
-      height: 40px;
+      top: -12px;
+      right: -12px;
+      width: 38px;
+      height: 38px;
       background-color: #ec407a;
       color: white;
       border: 2px solid #ffffff;
-      font-size: 1.1rem;
+      font-size: 1rem;
       font-weight: bold;
       border-radius: 50%;
       cursor: pointer;
@@ -378,55 +411,64 @@
       transform: scale(1.15) rotate(90deg);
     }
 
+    /* --- RESPONSIVE EN PANTALLAS PEQUEÑAS (MOVILES) --- */
     @media (max-width: 650px) {
       .invitation-wrapper {
         flex-direction: column;
-        gap: 15px;
-      }
-
-      .envelope-container {
-        width: 280px;
-        height: 185px;
-      }
-
-      .card-preview {
-        width: 244px;
+        gap: 12px;
       }
 
       .character-gif {
-        width: 85px;
-        max-height: 100px;
+        width: 78px;
+        max-height: 95px;
       }
 
-      .corner-floral {
-        font-size: 1.7rem;
+      .bg-floating-img {
+        width: 38px;
+      }
+
+      /* Reubicación en móviles */
+      .picnic-cesta { top: 12%; left: 6%; }
+      .picnic-tarot { top: 50%; left: 4%; }
+      .picnic-pastel { top: 82%; left: 6%; }
+
+      .picnic-croissant { top: 12%; right: 6%; }
+      .picnic-fruta { top: 50%; right: 4%; }
+      .picnic-tea { top: 82%; right: 6%; }
+
+      .corner-floral-img {
+        width: 95px;
       }
     }
   </style>
 </head>
 <body>
 
-  <div class="corner-floral top-left">🎀</div>
-  <div class="corner-floral top-right">🎀</div>
-  <div class="corner-floral bottom-left">🎀</div>
-  <div class="corner-floral bottom-right">🎀</div>
+  <!-- ESQUINEROS FLORALES EN LAS 4 ESQUINAS -->
+  <img src="esquinero.png" alt="Decoración floral" class="corner-floral-img top-left">
+  <img src="esquinero.png" alt="Decoración floral" class="corner-floral-img top-right">
+  <img src="esquinero.png" alt="Decoración floral" class="corner-floral-img bottom-left">
+  <img src="esquinero.png" alt="Decoración floral" class="corner-floral-img bottom-right">
 
-  <div class="bg-flower f1">🧺</div>
-  <div class="bg-flower f2">🍰</div>
-  <div class="bg-flower f3">🥐</div>
-  <div class="bg-flower f4">☕️</div>
-  <div class="bg-flower f5">🥪</div>
-  <div class="bg-flower f6">👒</div>
+  <!-- ELEMENTOS DE PICNIC PNG FLOTANDO -->
+  <img src="cesta.png" alt="Cesta" class="bg-floating-img picnic-cesta">
+  <img src="tarot.png" alt="Tarot" class="bg-floating-img picnic-tarot">
+  <img src="pastel.png" alt="Pastel" class="bg-floating-img picnic-pastel">
 
-  <div class="petal" style="left: 8%; animation-delay: 0s;">🌸</div>
-  <div class="petal" style="left: 28%; animation-delay: 3s;">🌺</div>
-  <div class="petal" style="left: 50%; animation-delay: 1.5s;">🏵️</div>
-  <div class="petal" style="left: 72%; animation-delay: 4.5s;">🌸</div>
-  <div class="petal" style="left: 88%; animation-delay: 2s;">🌺</div>
+  <img src="croissant.png" alt="Croissant" class="bg-floating-img picnic-croissant">
+  <img src="fruta.png" alt="Fruta" class="bg-floating-img picnic-fruta">
+  <img src="tea.png" alt="Té" class="bg-floating-img picnic-tea">
+
+  <!-- PÉTALOS PNG EN LLUVIA CONTINUA -->
+  <img src="petalo1.png" alt="Pétalo" class="petal-img" style="left: 8%; animation-delay: 0s;">
+  <img src="petalo2.png" alt="Pétalo" class="petal-img" style="left: 24%; animation-delay: 3s;">
+  <img src="petalo3.png" alt="Pétalo" class="petal-img" style="left: 45%; animation-delay: 1.2s;">
+  <img src="petalo1.png" alt="Pétalo" class="petal-img" style="left: 62%; animation-delay: 4.5s;">
+  <img src="petalo2.png" alt="Pétalo" class="petal-img" style="left: 78%; animation-delay: 2.2s;">
+  <img src="petalo3.png" alt="Pétalo" class="petal-img" style="left: 91%; animation-delay: 5.8s;">
 
   <div class="container">
-    <!-- Título con tipografía editorial Playfair Display -->
-    <h1 class="header-title">🌸 ¡Te espero en mi picnic! 🌸</h1>
+    <h1 class="header-title">¡Te espero en mi picnic!</h1>
     
     <div class="instructions" id="hint">
       <span class="instructions-icon">💌</span>
@@ -439,10 +481,8 @@
       <div class="envelope-container" id="envelope">
         <div class="flap"></div>
         
-        <!-- Estampita manuscrita "Para: [Nombre]" -->
         <div class="recipient-tag" id="recipient-tag">Para: Ti</div>
 
-        <!-- Sello de cera SVG -->
         <div class="seal-svg-container">
           <div class="seal-half seal-left-half">
             <svg viewBox="0 0 100 100" width="100%" height="100%">
@@ -500,11 +540,9 @@
       });
     }
 
-    // Extracción limpia del nombre dinámico
     if (nameParam) {
       recipientTag.textContent = `Para: ${nameParam}`;
     } else if (imgParam) {
-      // e.g. "Invitacion-valeria.png" -> "Valeria"
       const fileName = imgParam.split('/').pop().split('.')[0];
       const cleanName = fileName.replace(/^invitacion[-_]?/i, '');
       if (cleanName) {
